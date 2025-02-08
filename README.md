@@ -1,39 +1,34 @@
-# ISRA.io - Secure Web3 Wallet Recovery Platform
+# ISRA.io - Secure Web3 Secret Phrase Management Platform
 
 
-Welcome to **ISRA.io**, your dependable solution for decentralized wallet recovery. We combine advanced smart contract technology with a robust network of guardians to ensure your crypto assets are secure and recoverable.
-
+Welcome to **ISRA.io**, your reliable solution for maintaining the security of your Web3 secret phrases. We utilize advanced encryption and a decentralized architecture to ensure that your secret phrase remains intact and accessible only to you.
 
 ## 🛡️ Key Features
 
-### 🔐 Smart Contract Security
-- Advanced encryption
-- Real-time monitoring
-- Audited contracts
-- Multi-signature checks
+### 🔐 Advanced Encryption
+- State-of-the-art encryption protocols safeguard your secret phrase.
+- Real-time monitoring of access and attempts to use the secret phrase.
 
-### 🌐 Decentralized Architecture
-- No single point of failure
-- Distributed guardian system
-- Non-custodial
-- Blockchain-agnostic
+### 🌐 Decentralized Security
+- Leveraging blockchain technology to distribute the encryption keys.
+- No single entity can access your full secret phrase without consent.
 
-## 🎞️ Blockchain in Action
+## 🎞️ Animation: How Blockchain Secures Your Secret Phrase
 
 ![Blockchain Animation](https://your-gif-url.com/blockchain-animation.gif)
 
-This animation demonstrates the decentralized process of transactions within the blockchain, which underpins the robust security features of ISRA.io.
+This animation shows how blockchain technology is utilized to decentralize the storage and management of secret phrases, enhancing security through distributed trust.
 
 ## 🧰 Technical Stack
 
 - **Frontend**: React.js, Three.js, TailwindCSS
-- **Smart Contracts**: Solidity, OpenZeppelin
-- **Testing**: Hardhat, Chai
-- **Infrastructure**: IPFS for decentralized storage
+- **Blockchain**: Ethereum, Solidity for smart contracts
+- **Security**: OpenZeppelin for contract security
+- **Storage**: IPFS for decentralized data storage
 
 ## 🚀 Getting Started
 
-To get a local copy up and running follow these simple steps:
+Set up ISRA.io locally with these steps:
 
 ```bash
 git clone https://github.com/your-username/isra-io.git
