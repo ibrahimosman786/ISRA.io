@@ -38,7 +38,7 @@ Welcome to **ISRA.io**, your reliable solution for maintaining the security of y
 Set up ISRA.io locally with these steps:
 
 ```bash
-git clone https://github.com/your-username/isra-io.git
+git clone https://github.com/ibrahimosman786/ISRA.io.git
 cd isra-io
 npm install
 npm run dev
