@@ -1,88 +1,68 @@
 # ISRA.io - Secure Web3 Wallet Recovery Platform
 
-![ISRA.io](https://your-image-url.com/isra-logo.png)
+![ISRA.io Logo](https://your-image-url.com/isra-logo.png)
 
-## About ISRA.io
+Welcome to **ISRA.io**, your dependable solution for decentralized wallet recovery. We combine advanced smart contract technology with a robust network of guardians to ensure your crypto assets are secure and recoverable.
 
-ISRA.io is a cutting-edge decentralized wallet recovery solution designed to eliminate the anxiety of losing access to your crypto assets. By leveraging advanced smart contract technology and a network of trusted guardians, we provide a secure, private, and user-friendly way to recover your Web3 wallet.
+---
 
-## Key Features
+## 🎥 Demo Video
+
+Watch our quick overview to see how ISRA.io can secure your digital assets:
+
+[![Watch the Video](https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg)](https://youtube.com/watch?v=YOUR_VIDEO_ID)
+
+---
+
+## 🛡️ Key Features
 
 ### 🔐 Smart Contract Security
-- Advanced encryption protocols
-- Real-time transaction monitoring
-- Audited smart contracts
-- Multi-signature verification
+- Advanced encryption
+- Real-time monitoring
+- Audited contracts
+- Multi-signature checks
 
-### 🛡️ Decentralized Architecture
+![Security Features](https://your-image-url.com/security-features.png)
+
+### 🌐 Decentralized Architecture
 - No single point of failure
-- Distributed guardian network
-- Non-custodial solution
-- Blockchain-agnostic design
+- Distributed guardian system
+- Non-custodial
+- Blockchain-agnostic
+
+![Decentralized Architecture](https://your-image-url.com/decentralized-architecture.png)
 
 ### ⏰ Time-Locked Protection
-- Configurable waiting periods
-- Mandatory verification windows
-- Anti-theft protection measures
-- Guardian consensus requirements
+- Configurable delays
+- Mandatory verification
+- Anti-theft protocols
+- Guardian consensus
 
 ### 🔑 Privacy-First Approach
 - End-to-end encryption
 - Zero-knowledge proofs
-- Confidential recovery process
+- Confidential processes
 - Private guardian management
 
-## Technical Stack
-
-- **Frontend**: React.js, Three.js, TailwindCSS
-- **Smart Contracts**: Solidity
-- **Testing**: Hardhat, Chai
-- **Security**: OpenZeppelin
-- **Infrastructure**: Decentralized Storage (IPFS)
-
-## Getting Started
-
-```bash
-# Clone the repository
-git clone https://github.com/your-username/isra-io.git
-
-# Install dependencies
-cd isra-io
-npm install
-
-# Run development server
-npm run dev
-```
-
-## Security
-
-ISRA.io prioritizes the security of your assets above all else. Our smart contracts have undergone rigorous auditing, and we maintain a bug bounty program for continuous security improvements.
-
-## Roadmap
-
-- [x] Core wallet recovery functionality
-- [x] Guardian management system
-- [x] Multi-chain support
-- [ ] Mobile app release
-- [ ] Enhanced guardian customization
-- [ ] Biometric authentication integration
-- [ ] Insurance partnerships
-
-## Contributing
-
-We welcome contributions from the community! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
-
-## Community & Support
-
-- [Website](https://isra.io)
-- [Documentation](https://docs.isra.io)
-- [Discord](https://discord.gg/isra-io)
-- [Twitter](https://twitter.com/isra_io)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+![Privacy Features](https://your-image-url.com/privacy-features.png)
 
 ---
 
-ISRA.io is committed to making Web3 wallet recovery secure, accessible, and worry-free. Join us in building the future of digital asset security.
+## 🧰 Technical Stack
+
+- **Frontend**: React.js, Three.js, TailwindCSS
+- **Smart Contracts**: Solidity, OpenZeppelin
+- **Testing**: Hardhat, Chai
+- **Infrastructure**: IPFS for decentralized storage
+
+---
+
+## 🚀 Getting Started
+
+To get a local copy up and running follow these simple steps:
+
+```bash
+git clone https://github.com/your-username/isra-io.git
+cd isra-io
+npm install
+npm run dev
