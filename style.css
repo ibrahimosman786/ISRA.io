@@ -1,0 +1,60 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    background-color: #1a1a1a; /* Dark background */
+}
+
+.background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #0f9b0f 0%, #000000 100%);
+    animation: backgroundShift 30s infinite alternate;
+}
+
+@keyframes backgroundShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%;}
+    100% { background-position: 0% 50%;}
+}
+
+.animated-title {
+    font-size: 2em;
+    animation: moveInRight 2s ease-out;
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.features span {
+    padding: 0.5em;
+}
+
+.download-buttons a {
+    text-decoration: none;
+    color: white;
+    background: green;
+    padding: 0.5em 1em;
+    margin: 0.2em;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.download-buttons a:hover {
+    background-color: #0f9b0f;
+}

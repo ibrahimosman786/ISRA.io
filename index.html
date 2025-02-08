@@ -1,0 +1,803 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isra.io | Secure Wallet Recovery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    
+    :root {
+      --glow-green: #4ade80;
+      --dark-bg: #0a0a0a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--dark-bg);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, #0f3320 0%, #000000 100%);
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    .background::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent 0%, rgba(74,222,128,0.1) 100%);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.5rem 2rem;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--glow-green);
+      text-shadow: 0 0 10px rgba(74,222,128,0.5);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--glow-green);
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 5rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .typing-container {
+      display: inline-block;
+      position: relative;
+    }
+
+    .typing-text {
+      color: var(--glow-green);
+      text-shadow: 0 0 20px rgba(74,222,128,0.5);
+    }
+
+    .typing-cursor {
+      position: absolute;
+      right: -4px;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background-color: var(--glow-green);
+      animation: blink 0.7s infinite;
+    }
+
+    .features {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(74,222,128,0.1);
+      border-radius: 2rem;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(74,222,128,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-2px);
+      background: rgba(74,222,128,0.15);
+    }
+
+    .feature i {
+      font-size: 1.25rem;
+      color: var(--glow-green);
+    }
+
+    .feature span {
+      color: white;
+      font-size: 1rem;
+    }
+
+    .hero p {
+      font-size: 2rem;
+      color: #ffffff99;
+      margin: 1.5rem 0;
+      animation: slideIn 1s ease forwards;
+    }
+
+    .download-section {
+      display: flex;
+      gap: 1rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .download-button {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--glow-green);
+      border-radius: 0.5rem;
+      color: black;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .download-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(74,222,128,0.4);
+    }
+
+    /* How It Works Section */
+    .how-it-works {
+      padding: 5rem 2rem;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .how-it-works h2 {
+      font-size: 3.5rem;
+      margin-bottom: 3rem;
+      color: white;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .process-card {
+      background: rgba(15,23,18,0.6);
+      padding: 3rem 2rem;
+      border-radius: 1.5rem;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(74,222,128,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .process-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 40px rgba(74,222,128,0.2);
+    }
+
+    .process-card h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .process-card p {
+      font-size: 1.2rem;
+      color: #ffffff99;
+      line-height: 1.6;
+    }
+
+    /* Ready Section */
+    .ready-section {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: linear-gradient(to bottom, transparent, rgba(15,51,32,0.3));
+    }
+
+    .ready-section h2 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .ready-section p {
+      font-size: 1.5rem;
+      color: #ffffff99;
+      margin-bottom: 2rem;
+    }
+
+    /* Creative Button Styles (adapted from Uiverse.io by adamgiebl) */
+    .cta-button {
+      --green: #1BFD9C;
+      font-size: 15px;
+      padding: 0.7em 2.7em;
+      letter-spacing: 0.06em;
+      position: relative;
+      font-family: inherit;
+      border-radius: 0.6em;
+      overflow: hidden;
+      transition: all 0.3s;
+      line-height: 1.4em;
+      border: 2px solid var(--green);
+      background: linear-gradient(
+        to right,
+        rgba(27,253,156,0.1) 1%,
+        transparent 40%,
+        transparent 60%,
+        rgba(27,253,156,0.1) 100%
+      );
+      color: var(--green);
+      box-shadow: inset 0 0 10px rgba(27,253,156,0.4),
+                  0 0 9px 3px rgba(27,253,156,0.1);
+    }
+
+    .cta-button:hover {
+      color: #82ffc9;
+      box-shadow: inset 0 0 10px rgba(27,253,156,0.6),
+                  0 0 9px 3px rgba(27,253,156,0.2);
+    }
+
+    .cta-button::before {
+      content: "";
+      position: absolute;
+      left: -4em;
+      width: 4em;
+      height: 100%;
+      top: 0;
+      transition: transform 0.4s ease-in-out;
+      background: linear-gradient(
+        to right,
+        transparent 1%,
+        rgba(27,253,156,0.1) 40%,
+        rgba(27,253,156,0.1) 60%,
+        transparent 100%
+      );
+    }
+
+    .cta-button:hover::before {
+      transform: translateX(15em);
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* --------------------------------------------------
+       "Learn More" Button Styles (From Uiverse.io by Saad3092003)
+    ----------------------------------------------------- */
+    button {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      outline: none;
+      border: 0;
+      vertical-align: middle;
+      text-decoration: none;
+      background: transparent;
+      padding: 0;
+      font-size: inherit;
+      font-family: inherit;
+    }
+    button.learn-more {
+      width: 12rem;
+      height: auto;
+    }
+    button.learn-more .circle {
+      transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+      box-shadow: 0 0 5px 1px white;
+      position: relative;
+      display: block;
+      margin: 0;
+      width: 3rem;
+      height: 3rem;
+      background: #282936;
+      border-radius: 1.625rem;
+    }
+    button.learn-more .circle .icon {
+      transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      background: #fff;
+    }
+    button.learn-more .circle .icon.arrow {
+      transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+      left: 0.625rem;
+      width: 1.125rem;
+      height: 0.125rem;
+      background: none;
+    }
+    button.learn-more .circle .icon.arrow::before {
+      position: absolute;
+      content: "";
+      top: -0.29rem;
+      right: 0.0625rem;
+      width: 0.625rem;
+      height: 0.625rem;
+      border-top: 0.125rem solid #fff;
+      border-right: 0.125rem solid #fff;
+      transform: rotate(45deg);
+    }
+    button.learn-more .button-text {
+      transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.75rem 0;
+      margin: 0 0 0 1.85rem;
+      color: rgba(255, 255, 255, 0.493);
+      font-weight: 700;
+      line-height: 1.6;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    button:hover .circle {
+      width: 100%;
+      box-shadow: 0 0 10px 2px white;
+    }
+    button:hover .button-text {
+      transform: translate(-1.7rem, 0);
+    }
+    button:hover .circle .icon.arrow {
+      background: #fff;
+      transform: translate(8.7rem, 0);
+    }
+    button:active .circle .icon.arrow {
+      transform: translate(9.5rem, 0);
+      transition: all 0.3s;
+    }
+    button:active .circle {
+      transform: scale(0.9);
+      transition: all 0.3s;
+      box-shadow: 0 0 5px 0.5px white;
+    }
+    button:hover .button-text {
+      color: #fff;
+    }
+    button:active .button-text {
+      color: rgba(255, 255, 255, 0.459);
+    }
+
+  </style>
+
+<nav class="nav">
+    <div class="logo-container">
+      <canvas id="logoCanvas" class="logo-canvas"></canvas>
+      <div class="logo-shield">
+        <i class="fas fa-shield-halved"></i>
+      </div>
+      <a href="index.html" class="logo-text">
+        ISRA<span class="logo-dot">.io</span>
+      </a>
+    </div>
+    <div class="nav-links">
+      <a href="features.html">Features</a>
+      <a href="howitworks.html">How It Works</a>
+      <a href="documentation.html">Documentation</a>
+      <a href="recoveryportal.html">Recovery Portal</a>
+    </div>
+  </nav>
+  
+  <!-- Add these styles to your existing CSS -->
+  <style>
+  .logo-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    z-index: 2;
+  }
+  
+  .logo-canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+  
+  .logo-shield {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-right: 0.5rem;
+    animation: pulse 2s infinite;
+  }
+  
+  .logo-shield i {
+    color: var(--glow-green);
+    font-size: 1.2rem;
+    filter: drop-shadow(0 0 8px rgba(74,222,128,0.5));
+  }
+  
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--glow-green);
+    text-shadow: 0 0 10px rgba(74,222,128,0.5);
+    text-decoration: none;
+    position: relative;
+    z-index: 2;
+    letter-spacing: 0.05em;
+  }
+  
+  .logo-dot {
+    display: inline-block;
+    animation: blink 1.5s infinite;
+    color: var(--glow-green);
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  </style>
+  
+  <!-- Add this script to initialize Three.js animations -->
+  <script>
+  let scene, camera, renderer, hexagons = [];
+  
+  function initLogoAnimation() {
+    const container = document.querySelector('.logo-container');
+    const canvas = document.getElementById('logoCanvas');
+    
+    // Setup scene
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+    
+    renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      alpha: true,
+      antialias: true
+    });
+    
+    renderer.setSize(container.offsetWidth * 1.5, container.offsetHeight * 1.5);
+    renderer.setClearColor(0x000000, 0);
+    
+    // Create hexagonal patterns
+    const geometry = new THREE.CircleGeometry(1, 6);
+    const material = new THREE.MeshBasicMaterial({
+      color: 0x4ade80,
+      transparent: true,
+      opacity: 0.1,
+      wireframe: true
+    });
+  
+    // Create multiple hexagons
+    for (let i = 0; i < 5; i++) {
+      const hexagon = new THREE.Mesh(geometry, material.clone());
+      hexagon.material.opacity = 0.1 - (i * 0.01);
+      hexagon.scale.set(1 + (i * 0.5), 1 + (i * 0.5), 1);
+      hexagon.rotation.z = i * (Math.PI / 5);
+      scene.add(hexagon);
+      hexagons.push({
+        mesh: hexagon,
+        rotationSpeed: 0.001 * (1 + i * 0.5),
+        pulsePhase: i * Math.PI / 3
+      });
+    }
+  
+    camera.position.z = 5;
+    
+    // Handle window resize
+    window.addEventListener('resize', onWindowResize, false);
+    
+    // Start animation
+    animate();
+  }
+  
+  function onWindowResize() {
+    const container = document.querySelector('.logo-container');
+    camera.aspect = container.offsetWidth / container.offsetHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.offsetWidth * 1.5, container.offsetHeight * 1.5);
+  }
+  
+  function animate() {
+    requestAnimationFrame(animate);
+    
+    const time = Date.now() * 0.001;
+    
+    hexagons.forEach((hexagon, index) => {
+      hexagon.mesh.rotation.z += hexagon.rotationSpeed;
+      
+      // Add subtle pulsing effect
+      const scale = 1 + Math.sin(time * 2 + hexagon.pulsePhase) * 0.1;
+      hexagon.mesh.scale.x = scale * (1 + index * 0.5);
+      hexagon.mesh.scale.y = scale * (1 + index * 0.5);
+    });
+    
+    renderer.render(scene, camera);
+  }
+  
+  document.addEventListener('DOMContentLoaded', initLogoAnimation);
+  </script>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+ 
+<body>
+ 
+  <div class="background"></div>
+  <div id="canvas-container"></div>
+  <nav class="nav">
+    <div class="logo">
+      <a href="index.html" style="color:inherit; text-decoration:none;">ISRA.IO</a>
+    </div>
+    <div class="nav-links">
+      <a href="features.html">Features</a>
+      <a href="howitworks.html">How It Works</a>
+      <a href="documentation.html">Documentation</a>
+      <a href="recoveryportal.html">Recovery Portal</a>
+    </div>
+  </nav>
+
+  <main class="hero">
+    <h1>
+      Your Go-To
+      <span class="typing-container">
+        <span class="typing-text">Web3 Wallet</span>
+        <span class="typing-cursor"></span>
+      </span>
+    </h1>
+    <p>Leading Multi-Chain Wallet Solution</p>
+
+    <div class="features">
+        <div class="feature">
+            <i class="fas fa-link"></i>
+            <span>Secure</span>
+        </div>
+      <div class="feature">
+        <i class="fas fa-user-shield"></i>
+        <span>Private</span>
+      </div>
+      <div class="feature">
+        <i class="fas fa-cube"></i>
+        <span>Decentralized</span>
+      </div>
+      <div class="feature">
+        <i class="fas fa-cog"></i>
+        <span>Versatile</span>
+      </div>
+    </div>
+
+    <div class="download-section">
+      <a href="https://www.apple.com/app-store/" class="download-button">
+        <i class="fab fa-apple"></i> App Store
+      </a>
+      <a href="https://play.google.com/" class="download-button">
+        <i class="fab fa-android"></i> Google Play
+      </a>
+      <a href="https://chrome.google.com/webstore" class="download-button">
+        <i class="fab fa-chrome"></i> Chrome Extension
+      </a>
+    </div>
+  </main>
+
+  <section class="how-it-works">
+    <h2>How It Works</h2>
+    <div class="process-grid">
+      <div class="process-card">
+        <h3>Smart Contract Setup</h3>
+        <p>Deploy your recovery smart contract with custom parameters</p>
+      </div>
+      <div class="process-card">
+        <h3>Guardian Assignment</h3>
+        <p>Choose trusted entities to secure your recovery process</p>
+      </div>
+      <div class="process-card">
+        <h3>Verify & Confirm</h3>
+        <p>Multi-signature verification ensures security</p>
+      </div>
+      <div class="process-card">
+        <h3>Secure Recovery</h3>
+        <p>Safely recover assets after timelock period</p>
+      </div>
+    </div>
+   
+    <div style="margin-top: 2rem;">
+      <button class="learn-more" onclick="location.href='howitworks.html'">
+        <span aria-hidden="true" class="circle">
+          <span class="icon arrow"></span>
+        </span>
+        <span class="button-text">Learn More</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="ready-section" style="padding: 8rem 2rem; text-align: center;">
+    <h2 style="font-size: 3.5rem; margin-bottom: 1rem; color: white;">Ready to Secure Your Assets?</h2>
+    <p style="font-size: 1.5rem; color: #ffffff99; margin-bottom: 2rem;">Start protecting your crypto wallet today</p>
+    <button class="cta-button" onclick="location.href='recoveryportal.html'">Launch Recovery Portal</button>
+  </section>
+  <section class="founder-section" style="padding: 6rem 2rem; text-align: center; background: rgba(0, 0, 0, 0.4);">
+    <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: white; letter-spacing: -0.02em; font-weight: 600;">
+      Meet the Founder
+    </h2>
+    <div class="process-card" style="max-width: 600px; margin: 0 auto 3rem; background: rgba(15,23,18,0.8); border: 1px solid rgba(74,222,128,0.1);">
+      <div style="padding: 2.5rem;">
+        <h3 style="color: var(--glow-green); margin-bottom: 1.5rem; font-size: 1.75rem; font-weight: 500; text-shadow: 0 0 10px rgba(74,222,128,0.3);">
+          Ibrahim Osman
+        </h3>
+        <p style="font-size: 1.1rem; color: #ffffff99; line-height: 1.8; margin-bottom: 2rem; max-width: 500px; margin: 0 auto;">
+            Driven by a vision to mainstream decentralized currency, I am deeply involved in exploring AI and quantum computing to bring simple solutions to complex problems, aiming to make advanced technology accessible and beneficial for all. </p>
+        
+        <!-- Social Links -->
+        <div class="card" style="width: 180px; height: 70px; margin: 2rem auto 0; padding: 0.5rem; border-radius: 35px; background: rgba(74,222,128,0.05);">
+          <a href="https://github.com/ibrahimosman786" target="_blank" rel="noopener noreferrer" class="social-link1" style="position: relative; display: flex; align-items: center; justify-content: center; width: 50%; color: whitesmoke; font-size: 24px; text-decoration: none; transition: 0.25s; border-radius: 50px;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" height="1.25em" viewBox="0 0 496 512" style="position: absolute; display: flex; width: 60%; height: 100%; opacity: 1; transition: opacity 0.25s; z-index: 2; cursor: pointer;">
+              <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"></path>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/ibrahimosman1/" target="_blank" rel="noopener noreferrer" class="social-link2" style="position: relative; display: flex; align-items: center; justify-content: center; width: 50%; color: whitesmoke; font-size: 24px; text-decoration: none; transition: 0.25s; border-radius: 50px;">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1.25em" viewBox="0 0 448 512" fill="#fff" style="position: absolute; display: flex; width: 60%; height: 100%; opacity: 1; transition: opacity 0.25s; z-index: 2; cursor: pointer;">
+              <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .card {
+      display: flex;
+      background: transparent;
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-2px);
+    }
+    
+    .social-link1:hover {
+      background-color: #1a1e22;
+      animation: bounce_613 0.4s linear;
+    }
+    
+    .social-link2:hover {
+      background-color: #0a66c2;
+      animation: bounce_613 0.4s linear;
+    }
+    
+    @keyframes bounce_613 {
+      40% { transform: scale(1.4); }
+      60% { transform: scale(0.8); }
+      80% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+  </style>
+
+  <script>
+    
+    // Continuous typing animation
+    const phrases = [
+      'for Worry-Free Key Safety',
+      'for Losing the Worry, Not Your Keys',
+      'for Never Losing Your Secret Phrase Again'
+    ];
+    let currentPhraseIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting = false;
+    const typingDelay = 150;
+    const erasingDelay = 100;
+    const newTextDelay = 2000;
+    
+    function type() {
+      const currentPhrase = phrases[currentPhraseIndex];
+      const typingText = document.querySelector('.typing-text');
+
+      if (isDeleting) {
+        typingText.textContent = currentPhrase.substring(0, currentCharIndex - 1);
+        currentCharIndex--;
+      } else {
+        typingText.textContent = currentPhrase.substring(0, currentCharIndex + 1);
+        currentCharIndex++;
+      }
+
+      if (!isDeleting && currentCharIndex === currentPhrase.length) {
+        setTimeout(() => (isDeleting = true), newTextDelay);
+      } else if (isDeleting && currentCharIndex === 0) {
+        isDeleting = false;
+        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+      }
+
+      setTimeout(type, isDeleting ? erasingDelay : typingDelay);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      setTimeout(type, newTextDelay);
+      
+    });
+    
+  </script>
+</body>
+</html>  
+
+
+
+ 

@@ -1,0 +1,576 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isra.io | Recovery Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    /* Original recovery portal styles */
+    :root {
+      --glow-green: #4ade80;
+      --dark-bg: #0a0a0a;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: var(--dark-bg);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, #0f3320 0%, #000000 100%);
+      opacity: 0.8;
+      z-index: -1;
+    }
+    .background::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent 0%, rgba(74,222,128,0.1) 100%);
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.5rem 2rem;
+      align-items: center;
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--glow-green);
+      text-shadow: 0 0 10px rgba(74,222,128,0.5);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      color: var(--glow-green);
+    }
+    .content {
+      padding: 6rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* New form styles from uiverse */
+    .card {
+      background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+      border-radius: 22px;
+      transition: all 0.3s;
+      margin-top: 2rem;
+    }
+    .card2 {
+      border-radius: 0;
+      transition: all 0.2s;
+      padding: 2em 0;
+    }
+    .card2:hover {
+      transform: scale(0.98);
+      border-radius: 20px;
+    }
+    .card:hover {
+      box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
+    }
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-left: 2em;
+      padding-right: 2em;
+      padding-bottom: 0.4em;
+      background-color: #171717;
+      border-radius: 25px;
+      transition: 0.4s ease-in-out;
+    }
+    #heading {
+      text-align: center;
+      margin: 2em;
+      color: rgb(255, 255, 255);
+      font-size: 1.2em;
+    }
+    .field {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+      border-radius: 25px;
+      padding: 0.6em;
+      border: none;
+      outline: none;
+      color: white;
+      background-color: #171717;
+      box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+    }
+    .input-icon {
+      color: white;
+      font-size: 1.3em;
+    }
+    .input-field {
+      background: none;
+      border: none;
+      outline: none;
+      width: 100%;
+      color: #d3d3d3;
+      padding: 0.5em;
+      resize: vertical;
+    }
+    textarea.input-field {
+      min-height: 100px;
+    }
+    .form .btn {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      margin-top: 2.5em;
+    }
+    .button1 {
+      padding: 0.5em 2.3em;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      transition: 0.4s ease-in-out;
+      background-color: #252525;
+      color: white;
+      cursor: pointer;
+    }
+    .button1:hover {
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <nav class="nav">
+    <div class="logo">
+      <a href="index.html" style="color:inherit; text-decoration:none;">ISRA.IO</a>
+    </div>
+    <div class="nav-links">
+      <a href="features.html">Features</a>
+      <a href="howitworks.html">How It Works</a>
+      <a href="documentation.html">Documentation</a>
+      <a href="recoveryportal.html">Recovery Portal</a>
+    </div>
+  </nav>
+  <div class="content">
+    <h1>Recovery Portal</h1>
+    <p>
+      Welcome to the Recovery Portal. If you've lost access to your crypto assets, please fill out the form below to initiate the secure recovery process.
+    </p>
+
+    
+    <div class="card">
+      <div class="card2">
+        <form class="form">
+          <p id="heading">Recovery Request</p>
+          <div class="field">
+            <i class="fas fa-wallet input-icon"></i>
+            <input type="text" class="input-field" placeholder="Enter your wallet address" required>
+          </div>
+          <div class="field">
+            <i class="fas fa-envelope input-icon"></i>
+            <input type="email" class="input-field" placeholder="Enter your email" required>
+          </div>
+          <div class="field">
+            <i class="fas fa-file-alt input-icon"></i>
+            <textarea class="input-field" placeholder="Additional details (describe your situation)" required></textarea>
+          </div>
+          <div class="btn">
+            <button type="submit" class="button1">Submit Recovery Request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isra.io | Recovery Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Three.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    :root {
+      --glow-green: #4ade80;
+      --dark-bg: #0a0a0a;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: var(--dark-bg);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    #canvas-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.5rem 2rem;
+      align-items: center;
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--glow-green);
+      text-shadow: 0 0 10px rgba(74,222,128,0.5);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      color: var(--glow-green);
+    }
+    .content {
+      padding: 8rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      background: linear-gradient(to right, #fff, var(--glow-green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .card {
+      background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+      border-radius: 22px;
+      transition: all 0.3s;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .card2 {
+      border-radius: 0;
+      transition: all 0.2s;
+      padding: 2em 0;
+    }
+    .card2:hover {
+      transform: scale(0.98);
+      border-radius: 20px;
+    }
+    .card:hover {
+      box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
+    }
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-left: 2em;
+      padding-right: 2em;
+      padding-bottom: 0.4em;
+      background-color: #171717;
+      border-radius: 25px;
+      transition: 0.4s ease-in-out;
+    }
+    #heading {
+      text-align: center;
+      margin: 2em;
+      color: rgb(255, 255, 255);
+      font-size: 1.2em;
+    }
+    .field {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5em;
+      border-radius: 25px;
+      padding: 0.6em;
+      border: none;
+      outline: none;
+      color: white;
+      background-color: #171717;
+      box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+    }
+    .input-icon {
+      color: white;
+      font-size: 1.3em;
+    }
+    .input-field {
+      background: none;
+      border: none;
+      outline: none;
+      width: 100%;
+      color: #d3d3d3;
+      padding: 0.5em;
+      resize: vertical;
+    }
+    textarea.input-field {
+      min-height: 100px;
+    }
+    .form .btn {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      margin-top: 2.5em;
+    }
+    .button1 {
+      padding: 0.5em 2.3em;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      transition: 0.4s ease-in-out;
+      background-color: #252525;
+      color: white;
+      cursor: pointer;
+    }
+    .button1:hover {
+      background-color: black;
+      color: white;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .scroll-indicator {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--glow-green);
+      animation: float 2s ease-in-out infinite;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div id="canvas-container"></div>
+  <nav class="nav">
+    <div class="logo">
+      <a href="index.html" style="color:inherit; text-decoration:none;">ISRA.IO</a>
+    </div>
+    <div class="nav-links">
+      <a href="features.html">Features</a>
+      <a href="howitworks.html">How It Works</a>
+      <a href="documentation.html">Documentation</a>
+      <a href="recoveryportal.html">Recovery Portal</a>
+    </div>
+  </nav>
+  <div class="content">
+    <h1>Recovery Portal</h1>
+    <p>
+      Welcome to the Recovery Portal. If you've lost access to your crypto assets, please fill out the form below to initiate the secure recovery process.
+    </p>
+
+    <div class="card">
+      <div class="card2">
+        <form class="form">
+          <p id="heading">Recovery Request</p>
+          <div class="field">
+            <i class="fas fa-wallet input-icon"></i>
+            <input type="text" class="input-field" placeholder="Enter your wallet address" required>
+          </div>
+          <div class="field">
+            <i class="fas fa-envelope input-icon"></i>
+            <input type="email" class="input-field" placeholder="Enter your email" required>
+          </div>
+          <div class="field">
+            <i class="fas fa-file-alt input-icon"></i>
+            <textarea class="input-field" placeholder="Additional details (describe your situation)" required></textarea>
+          </div>
+          <div class="btn">
+            <button type="submit" class="button1">Submit Recovery Request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <i class="fas fa-angle-down fa-2x"></i>
+  </div>
+
+  <script>
+    // Three.js Animation Setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+    // Key Recovery Symbol Animation
+    function createKeyRecoverySymbol() {
+      const group = new THREE.Group();
+
+      // Create key-like geometry
+      const keyBodyGeometry = new THREE.CylinderGeometry(0.2, 0.2, 1.5, 32);
+      const keyHeadGeometry = new THREE.SphereGeometry(0.3, 32, 32);
+      const keyTeethGeometry = new THREE.BoxGeometry(0.5, 0.1, 0.2);
+
+      const material = new THREE.MeshStandardMaterial({ 
+        color: 0x4ade80,
+        transparent: true,
+        opacity: 0.7,
+        roughness: 0.4,
+        metalness: 0.3
+      });
+
+      // Key body
+      const keyBody = new THREE.Mesh(keyBodyGeometry, material);
+      keyBody.rotation.z = Math.PI / 2;
+      group.add(keyBody);
+
+      // Key head
+      const keyHead = new THREE.Mesh(keyHeadGeometry, material);
+      keyHead.position.x = -0.8;
+      keyHead.rotation.z = Math.PI / 2;
+      group.add(keyHead);
+
+      // Key teeth
+      const keyTeeth1 = new THREE.Mesh(keyTeethGeometry, material);
+      keyTeeth1.position.set(-0.5, 0.2, 0.1);
+      keyTeeth1.rotation.z = Math.PI / 4;
+      group.add(keyTeeth1);
+
+      const keyTeeth2 = new THREE.Mesh(keyTeethGeometry, material);
+      keyTeeth2.position.set(-0.5, -0.2, -0.1);
+      keyTeeth2.rotation.z = -Math.PI / 4;
+      group.add(keyTeeth2);
+
+      return group;
+    }
+
+    // Create the key recovery symbol
+    const keyGroup = createKeyRecoverySymbol();
+    scene.add(keyGroup);
+
+    // Add lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
+
+    // Create particles
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = 500;
+    const posArray = new Float32Array(particlesCount * 3);
+    for (let i = 0; i < particlesCount * 3; i++) {
+      posArray[i] = (Math.random() - 0.5) * 10;
+    }
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const particlesMaterial = new THREE.PointsMaterial({
+      size: 0.02,
+      color: 0x4ade80,
+      transparent: true,
+      opacity: 0.3,
+    });
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+
+    camera.position.z = 5;
+
+    // Animation loop
+    let mouseX = 0;
+    let mouseY = 0;
+    document.addEventListener('mousemove', (event) => {
+      mouseX = event.clientX / window.innerWidth - 0.5;
+      mouseY = event.clientY / window.innerHeight - 0.5;
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      // Subtle rotation and movement of the key
+      keyGroup.rotation.x = mouseY * 0.2;
+      keyGroup.rotation.y = mouseX * 0.2;
+      
+      // Subtle oscillation
+      keyGroup.position.y = Math.sin(Date.now() * 0.001) * 0.05;
+
+      // Subtle particle movement
+      particlesMesh.rotation.y += 0.0005;
+      particlesMesh.rotation.x += 0.0005;
+
+      renderer.render(scene, camera);
+    }
+    
+    animate();
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Scroll indicator behavior
+    window.addEventListener('scroll', () => {
+      const scrollIndicator = document.querySelector('.scroll-indicator');
+      if (window.scrollY > 100) {
+        scrollIndicator.style.opacity = '0';
+      } else {
+        scrollIndicator.style.opacity = '0.7';
+      }
+    });
+  </script>
+</body>
+</html>
